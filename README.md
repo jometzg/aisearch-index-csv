@@ -6,7 +6,9 @@ Azure AI Studio has a simple chat interface that allow you to test how an applic
 
 The user interface also lets you choose a blob storage folder and will index the contents in that for you. This is really useful as a code-free aproach for testing simple RAG scenarios.
 
-However, this does not work that well with CSV files as the whole file will by default be treated as one large *blob* to be indexed. Ideally, each of the rows in the CSV show get its own in the index and each of the columns should be represented too. An indexer for AI Search can be created that works with CSVs and this is described [here](https://learn.microsoft.com/en-us/azure/search/search-howto-index-csv-blobs)
+However, this does not work that well with CSV files as the whole file will by default be treated as one large *blob* to be indexed. Ideally, each of the rows in the CSV show get its own row in the index and each of the columns should be represented too. 
+
+An indexer for AI Search can be created that works with CSVs and this is described [here](https://learn.microsoft.com/en-us/azure/search/search-howto-index-csv-blobs)
 
 This repo shows how you can create a search index manually, outside of Azure AI Studio and then use this inside AI Studio later.
 
