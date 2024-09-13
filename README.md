@@ -103,6 +103,18 @@ Once the indexer has run, you can check what's in the index, by clicking on it a
 See below:
 ![alt text](./images/ai-search-index-contents.png "Populated index")
 
+### Using the index
+In the Azure AI Stusio chat, you can now choose the index you have created. You do this by:
+1. selecting AI search
+2. The search instance
+3. the search index
 
+You can then chat over the CSV data.
+
+
+# Summary
+Whilst it would be better if CSV ingestion was automated in a useful way in AI Studio, the use of a few REST requests can create an AI Search index in a way that aligns more with the tabular nature of the CSV.
+
+This index can then be used in Azure AI Studio.
 
 
