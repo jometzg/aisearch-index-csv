@@ -10,6 +10,15 @@ However, this does not work that well with CSV files as the whole file will by d
 
 This repo shows how you can create a search index manually, outside of Azure AI Studio and then use this inside AI Studio later.
 
+## Prerequisites
+To run this in your Azure subscription, you will need:
+1. Access to the Azure portal
+2. An Azure OpenAI instance with a model deployed. It is suggested a modern one like *gpt-4o*
+3. An Azure AI Search instance (this needs to be at least the basic tier)
+4. An Azure storage account
+5. Some means of executing the REST requests. Visual Studio code is good and has a REST client extension.
+
+   
 ## Creating a new index
 To create and populate a new index on AI Search, three components are needed:
 1. a data source
@@ -33,6 +42,8 @@ These columns will be referenced in the index and indexer below.
 
 
 ### Create a data source
+The REST request below can be executed in Postman or the REST client in VSCode. There is a file called *requests.http* which may be used.
+
 ```
 ### create a data source
 POST https://{{searchservce}}.search.windows.net/datasources?api-version=2024-07-01
@@ -87,6 +98,9 @@ api-key: {{searchkey}}
 
 The indexer should then run and populate the named index with one row per row in the CSV.
 
+Once the indexer has run, you can check what's in the index, by clicking on it and then hitting "Search". 
+
+See below:
 ![alt text](./images/ai-search-index-contents.png "Populated index")
 
 
