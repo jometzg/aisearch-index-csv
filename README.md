@@ -2,6 +2,8 @@
 
 Azure AI Studio has a simple chat interface that allow you to test how an application may work when using *your data*
 
+There is an illustration below:
+
 ![alt text](./images/ai-search-own-data.png "AI Studio chat")
 
 The user interface also lets you choose a blob storage folder and will index the contents in that for you. This is really useful as a code-free aproach for testing simple RAG scenarios.
