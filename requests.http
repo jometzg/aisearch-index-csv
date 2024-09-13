@@ -1,0 +1,51 @@
+### REST requests to create an index for CSV files in Azure Blob Storage
+### use your own values for the search service, search key, and storage connection string
+### note these should NOT be in quotes
+
+@searchservce= <YOUR_SEARCH_SERVICE_NAME>
+@searchkey = <YOUR_SEARCH_SERVICE_KEY>
+@storageconnectionstring = <YOUR_STORAGE_ACCOUNT_CONNECTION_STRING>
+  
+### create a data source
+POST https://{{searchservce}}.search.windows.net/datasources?api-version=2024-07-01
+Content-Type: application/json
+api-key: {{searchkey}}
+
+{
+    "name" : "my-blob-datasource",
+    "type" : "azureblob",
+    "credentials" : { "connectionString" : "{{storageconnectionstring}}" },
+    "container" : { "name" : "csv", "query" : "" }
+}
+
+### create an index. Note this has the columns from the specific CSV
+POST https://{{searchservce}}.search.windows.net/indexes?api-version=2024-07-01
+Content-Type: application/json
+api-key: {{searchkey}}
+
+{
+    "name" : "my-target-index",
+    "fields": [
+        { "name": "ID", "type": "Edm.String", "key": true, "searchable": false },
+        { "name": "chat_history", "type": "Edm.String", "searchable": true, "filterable": false },
+        { "name": "question", "type": "Edm.String", "searchable": true, "filterable": false },
+        { "name": "answer", "type": "Edm.String", "searchable": true, "filterable": false },
+        { "name": "documents", "type": "Edm.String", "searchable": true, "filterable": false },
+        { "name": "metadata_storage_name", "type": "Edm.String", "searchable": false, "filterable": true, "sortable": true  },
+        { "name": "metadata_storage_size", "type": "Edm.Int64", "searchable": false, "filterable": true, "sortable": true  },
+        { "name": "metadata_storage_content_type", "type": "Edm.String", "searchable": false, "filterable": true, "sortable": true }       
+    ]
+}
+
+
+### create an indexer, note this has the columns from the specific CSV
+POST https://{{searchservce}}.search.windows.net/indexers?api-version=2024-07-01
+Content-Type: application/json
+api-key: {{searchkey}}
+
+{
+  "name" : "my-csv-indexer2",
+  "dataSourceName" : "my-blob-datasource",
+  "targetIndexName" : "my-target-index",
+  "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "chat_history,question,answer,documents" } }
+}
