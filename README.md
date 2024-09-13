@@ -89,7 +89,7 @@ Content-Type: application/json
 api-key: {{searchkey}}
 
 {
-  "name" : "my-csv-indexer2",
+  "name" : "my-csv-indexer",
   "dataSourceName" : "my-blob-datasource",
   "targetIndexName" : "my-target-index",
   "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "chat_history,question,answer,documents" } }
