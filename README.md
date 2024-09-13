@@ -21,7 +21,7 @@ For this to work, some command-line work is needed (in this case some REST calls
 ### First the storage account
 If you already have a storage account, create a new blob storage *container* and then upload a CSV into the container. This can be all done from the portal. One is supplied in this repo "data.csv*
 
-![alt text](https://images/ai-search-sample-csv.png "Sample CSV")
+![alt text](./images/ai-search-sample-csv.png "Sample CSV")
 
 As you can see from the sample, this CSV has 4 columns:
 1. chat_history
@@ -87,7 +87,7 @@ api-key: {{searchkey}}
 
 The indexer should then run and populate the named index with one row per row in the CSV.
 
-![alt text](https://images/ai-search-index-contents.png "Populated index")
+![alt text](./images/ai-search-index-contents.png "Populated index")
 
 
 
